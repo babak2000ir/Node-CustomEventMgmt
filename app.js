@@ -1,19 +1,23 @@
 import eventManager from "./event-manager.js";
 
 eventManager.subscribe("event", (handled) => {
-    console.log("event 1");
+    console.log("static event 1");
     handled();
 });
 eventManager.subscribe("event", (handled) => {
-    console.log("event 2")
-    handled();
+    setTimeout(() => {
+        console.log("event 2 - 2 seconds delay");
+        handled();
+    }, 2000);
 });
 eventManager.subscribe("event", (handled) => {
-    console.log("event 3")
-    handled();
+    setTimeout(() => {
+        console.log("event 3 - 1 second delay");
+        handled();
+    }, 1000);
 });
 eventManager.subscribe("event", (handled) => {
-    console.log("event 4")
+    console.log("static event 4")
     handled();
 });
 
