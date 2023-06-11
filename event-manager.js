@@ -20,13 +20,13 @@ async function trigger(event, ...args) {
             resolve();
         }
         let _handlers = [...handlers[event]];
-        const handled = (sender) => {
-            _handlers = _handlers.filter(h => h !== sender);
+        function handled() {
+            _handlers = _handlers.filter(h => h !== this);
             if (_handlers.length === 0)
                 resolve();
         }
 
-        handlers[event].forEach(h => h(handled, ...args));
+        handlers[event].forEach(h => h(() => handled.call(h), ...args));
     });
 }
 

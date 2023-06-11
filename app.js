@@ -1,20 +1,20 @@
 import eventManager from "./event-manager.js";
 
-eventManager.subscribe("event", function h1(handled) {
+eventManager.subscribe("event", (handled) => {
     console.log("event 1");
-    handled(h1);
+    handled();
 });
-eventManager.subscribe("event", function h2(handled) {
+eventManager.subscribe("event", (handled) => {
     console.log("event 2")
-    handled(h2);
+    handled();
 });
-eventManager.subscribe("event", function h3(handled) {
+eventManager.subscribe("event", (handled) => {
     console.log("event 3")
-    handled(h3);
+    handled();
 });
-eventManager.subscribe("event", function h4(handled) {
+eventManager.subscribe("event", (handled) => {
     console.log("event 4")
-    handled(h4);
+    handled();
 });
 
 eventManager.trigger("event").then(() => console.log("event triggered"));
